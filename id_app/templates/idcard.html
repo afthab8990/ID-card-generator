@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID Card Generator</title>
+    <!-- Updated script for html2canvas (latest version) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        #id-card {
+            width: 300px;
+            height: 150px;
+            background-color: #f4f4f4;
+            border: 2px solid #000;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="id-card">
+        <p>Name: John Doe</p>
+        <p>ID: 123456</p>
+    </div>
+    
+    <button id="download-btn">Download ID Card</button>
+    
+</body>
+<script>
+    document.getElementById('download-btn').addEventListener('click', function() {
+        console.log("Button clicked!");
+
+        var cardElement = document.getElementById('id-card');
+        if (!cardElement) {
+            console.error("ID card element not found");
+            return;
+        }
+
+        html2canvas(cardElement, { scale: 1 }).then(function(canvas) {
+            console.log("Canvas created");
+
+            var link = document.createElement('a');
+            link.href = canvas.toDataURL("image/png");
+            link.download = 'id-card.png';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).catch(function(error) {
+            console.error("Error generating image: ", error);
+        });
+    });
+</script>
+
+</html>
