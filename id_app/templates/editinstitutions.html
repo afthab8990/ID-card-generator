@@ -1,0 +1,51 @@
+{% extends 'generator.html' %}
+{% load static %}
+{% block content %}
+<!-- Form -->
+ <div class="container-fluid">
+    <div class="row justify-content-center m-5" style="border-radius: 9px;">
+        <div class="row justify-content-center" >
+            <div class="col-9 d-flex align-items-center" style="background-size: cover; background-position: center; background-attachment: fixed; height: 200px; overflow: hidden; background-image: url('{% static 'img/institution.jpg' %}');">
+                    <h1 class="text-center text-primary" style="margin: auto;font-size: 80px;">Add isntitutions</h1>
+            </div>  
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-9">
+                <form method="post" action="{% url 'postinstitutions' %}" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">institution Name</label>
+                        <input class="form-control" type="text" name="institutionName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">institution Address</label>
+                        <input class="form-control" type="text" name="institutionAddress">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFileDisabled" class="form-label">logo</label>
+                        <input class="form-control" type="file" name="institutionLogo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Institution Number</label>
+                        <input class="form-control" type="text" name="institutionNumber">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Institution Alternate number</label>
+                        <input class="form-control" type="text" name="institutionNumber2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">institution Email</label>
+                        <input class="form-control" type="text" name="institutionEmail">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">institution alt Email</label>
+                        <input class="form-control" type="text" name="institutionEmail2">
+                    </div>
+                    <button  type="submit" class="btn btn-primary">Submit</button>             
+                </form>
+            </div>
+        </div>
+    </div>
+
+ </div>
+{% endblock %}

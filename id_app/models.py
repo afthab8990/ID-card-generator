@@ -2,13 +2,13 @@ from django.db import models
 from .models import *
 
 class instituition(models.Model):
-    instituitionName = models.CharField(max_length=40)
-    instituitionAddress = models.CharField(max_length=250)
-    instituitionLogo = models.ImageField()
-    instituitionNumber = models.IntegerField()
-    instituitionNumber2 = models.IntegerField()
-    instituitionEmail = models.EmailField()
-    instituitionEmail2 = models.EmailField()
+    institutionName = models.CharField(max_length=40)
+    institutionAddress = models.CharField(max_length=250)
+    institutionLogo = models.ImageField()
+    institutionNumber = models.IntegerField()
+    institutionNumber2 = models.IntegerField()
+    institutionEmail = models.EmailField()
+    institutionEmail2 = models.EmailField()
 
 class student(models.Model):
     studentName = models.CharField(max_length=25)
