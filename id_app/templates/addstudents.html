@@ -1,0 +1,68 @@
+{% extends 'generator.html' %}
+{% load static %}
+{% block content %}
+<!-- Form -->
+ <div class="container-fluid">
+    <div class="row justify-content-center" style="background-size: cover; background-position: center; background-attachment: fixed; height: 200px; overflow: hidden; background-image: url('{% static 'img/student.jpg' %}');" >
+        <h1 class="text-primary" style="margin: auto;font-size: 80px;">Students</h1>
+    </div>
+    <div class="row justify-content-center m-5" style="border-radius: 9px;">    
+        <div class="row justify-content-center mt-3">
+            <div class="col-9">
+                <form method="post" action="{% url 'poststudents' %}" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Student institution Name</label>
+                        <select class="form-select" id="inputGroupSelect01" name="sinstitution">
+                            {% for i in idata %}
+                                <option>{{ i.institutionName }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Student Name</label>
+                        <input class="form-control" type="text" name="studentName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Student Roll no</label>
+                        <input class="form-control" type="text" name="studentRollnumber">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFileDisabled" class="form-label">Student Picture</label>
+                        <input class="form-control" type="file" name="studentPhoto">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Student Number</label>
+                        <input class="form-control" type="text" name="studentNumber">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Student address line 1</label>
+                        <input class="form-control" type="text" name="studentAddress1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Student address line 2</label>
+                        <input class="form-control" type="text" name="studentAddress2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Student address line 3</label>
+                        <input class="form-control" type="text" name="studentAddress3">
+                    </div>
+                    <div class="col-6">
+                        <button  type="submit" class="solid-butn">Submit</button>
+                    </form>
+                   <button type="button" class="hollow-butn" onclick="window.location.href='{% url 'students' %}'" >Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ </div>
+{% endblock %}
+<!-- 
+institutionName = models.CharField(max_length=40)
+instituitionAddress = models.CharField(max_length=250)
+instituitionLogo = models.ImageField()
+instituitionNumber = models.IntegerField()
+instituitionNumber2 = models.IntegerField()
+instituitionEmail = models.EmailField()
+instituitionEmail2 = models.EmailField() -->

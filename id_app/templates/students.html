@@ -1,0 +1,37 @@
+{% extends 'generator.html' %}
+{% load static %}
+    {% block content %}    
+    <div class="container-fluid">
+        <div class="row justify-content-center" style="background-size: cover; background-position: center; background-attachment: fixed; height: 200px; overflow: hidden; background-image: url('{% static 'img/student.jpg' %}');" >
+            <h1 class="text-primary" style="margin: auto;font-size: 80px;">Students</h1>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2 d-flex justify-content-center m-3">
+                    <a  class="text-center" href="{% url 'addstudents' %}"><button class="box">
+                        <h1 class="text-center">+</h1>
+                    </button></a>
+                </div>
+                {% for i in sdata %}
+                <div class="col-2 d-flex justify-content-center m-3">
+                    <div class="box">
+                        <a><button class="close-btn">X</button></a>
+                            <div class="logo-box text-center m-3" >
+                                <img class="cardimg" src="{{ i.studentPhoto.url }}" >
+                            </div>
+                            <div class="half-box justify-content-center d-inline">
+                                <p class="text-center m-0">Name : {{ i.studentName }}</p>
+                                <p class="text-center m-0"> Roll no : {{ i.studentRollnumber }}</p>
+                            </div>
+                            <div class="half-box justify-content-center">
+
+                                <a href="{% url 'editinstitutions' id=i.id %}"><button class="change-btn text-center">Make changes</button></a>
+                            </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

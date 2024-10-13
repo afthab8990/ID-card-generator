@@ -2,23 +2,32 @@
 {% load static %}
     {% block content %}    
     <div class="container-fluid">
-
-        <div class="row">
-            <h1 style="font-size: 60px;">Institutions</h1>
+        <div class="row justify-content-center" style="background-size: cover; background-position: center; background-attachment: fixed; height: 200px; overflow: hidden; background-image: url('{% static 'img/institution.jpg' %}');" >
+            <h1 style="margin: auto;font-size: 80px;">Institutions</h1>
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-2 text-center m-3">
-                    <a href="{% url 'addinstitutions' %}"><button class="box">
-                        <h1>+</h1>
+                <div class="col-2 d-flex justify-content-center m-3">
+                    <a  class="text-center" href="{% url 'addinstitutions' %}"><button class="box">
+                        <h1 class="text-center">+</h1>
                     </button></a>
                 </div>
                 {% for i in idata %}
-                <div class="col-2 text-center m-3">
-                    <a href="{% url 'addinstitutions' %}"><button class="box">
-                        <img class="mb-5" src="{{ i.institutionLogo.url }}" width="150px" height="150px" style="border-radius: 75px ;border-style: solid;border-width: 1px;background-size: auto;" >
-                        <h5>{{ i.institutionName }}</h5>
-                    </button></a>
+                <div class="col-2 d-flex justify-content-center m-3">
+                    <div class="box">
+                        <a><button class="close-btn">X</button></a>
+                            <div class="logo-box text-center m-3" >
+                                <img class="cardimg" src="{{ i.institutionLogo.url }}" >
+                            </div>
+                            <div class="half-box justify-content-center ">
+                                <h5 class="text-center">{{ i.institutionName }}</h5>
+                            </div>
+                            <div class="half-box justify-content-center">
+
+                                <a href="{% url 'editinstitutions' id=i.id %}"><button class="change-btn text-center">Make changes</button></a>
+                            </div>
+
+                    </div>
                 </div>
                 {% endfor %}
             </div>

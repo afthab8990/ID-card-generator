@@ -2,14 +2,42 @@ body{
     font-family: Helvetica, sans-serif;
 }
 .navbar-nav .nav-link{
-    border-style:none;
-    border-bottom: 2px;
+    border-bottom-style:none;
 }
 .navbar-nav .nav-link:hover{
     font-weight: bold;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+}
+
+.hollow-butn{
+    border-style: solid;
+    border-radius: 3px;
+    transition: 0.4s;
+    padding: 5px;
+    background-color: white;
+    text-decoration: none;
+}
+.hollow-butn:hover{
+    background-color: black;
+    color: white;
+}
+
+.solid-butn{
+    border-style: solid;
+    border-radius: 3px;
+    transition: 0.4s;
+    padding: 5px;
+    color: white;
+    background-color: black;
+}
+
+.solid-butn:hover{
+    background-color: grey;
 }
 
 .box{
+    position: relative;
     width: 180px;
     height: 250px;
     background-color: white;
@@ -17,9 +45,61 @@ body{
     border-width: 1px;
     border-color: black;
     border-radius: 8px;
-
 }
 
 .box:hover{
     border-width: 2px;
+}
+
+.half-box {
+
+
+    align-items: center; 
+    width: 100%;
+}
+
+.logo-box{
+    top:50%;
+    height: 100px;
+}
+
+.cardimg{
+    width:80px;
+    height:80px;
+    background-size:cover;
+}
+
+.close-btn{
+    border-style: none;
+    position:absolute;
+    background: none;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 6px;
+    transition: 0.3s;
+}
+
+.close-btn:hover{
+    font-weight: bold;
+    background-color: black;
+    color: white;
+}
+
+.change-btn{
+    position: absolute;
+    bottom: 0px; /* Set the button 10px from the bottom */
+    left: 50%; /* Center the button horizontally */
+    transform: translateX(-50%); /* Adjust for centering */
+    background: none; /* You can style the button further */
+    border: none;
+    padding: 8px 18px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width:101%;
+}
+
+.change-btn:hover{
+    background-color: black;
+    color:white
 }
