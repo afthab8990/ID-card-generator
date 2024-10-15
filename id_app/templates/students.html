@@ -3,7 +3,7 @@
     {% block content %}    
     <div class="container-fluid">
         <div class="row justify-content-center" style="background-size: cover; background-position: center; background-attachment: fixed; height: 200px; overflow: hidden; background-image: url('{% static 'img/student.jpg' %}');" >
-            <h1 class="text-primary" style="margin: auto;font-size: 80px;">Students</h1>
+            <h1 class="text-warning" style="margin: auto;font-size: 80px;">Students</h1>
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -25,9 +25,8 @@
                             </div>
                             <div class="half-box justify-content-center">
 
-                                <a href="{% url 'editinstitutions' id=i.id %}"><button class="change-btn text-center">Make changes</button></a>
+                                <a href="{% url 'editstudents' id=i.id %}"><button class="change-btn text-center">Make changes</button></a>
                             </div>
-
                     </div>
                 </div>
                 {% endfor %}

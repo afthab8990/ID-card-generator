@@ -9,10 +9,12 @@
     <div class="row justify-content-center m-5" style="border-radius: 9px;">    
         <div class="row justify-content-center mt-3">
             <div class="col-9">
-                <form method="post" action="{% url 'poststudents' %}" enctype="multipart/form-data" >
+                {% for i in data %}
+                <form method="post" action="{% url 'updatestudents' id=i.id %}" enctype="multipart/form-data" >
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Student institution Name</label>
+                        <p>Current institution : {{ i.sinstitution.institutionName }}</p>
                         <select class="form-select" id="inputGroupSelect01" name="sinstitution">
                             {% for i in idata %}
                                 <option>{{ i.institutionName }}</option>
@@ -21,35 +23,36 @@
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Student Name</label>
-                        <input class="form-control" type="text" name="studentName">
+                        <input class="form-control" type="text" name="studentName" value="{{ i.studentName }}">
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Student Roll no</label>
-                        <input class="form-control" type="text" name="studentRollnumber">
+                        <input class="form-control" type="text" name="studentRollnumber" value="{{ i.studentRollnumber }}">
                     </div>
                     <div class="mb-3">
                         <label for="formFileDisabled" class="form-label">Student Picture</label>
-                        <input class="form-control" type="file" name="studentPhoto">
+                        <input class="form-control" type="file" name="studentPhoto" value="{{ i.studentPhoto }}">
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Student Number</label>
-                        <input class="form-control" type="text" name="studentNumber">
+                        <input class="form-control" type="text" name="studentNumber" value="{{ i.studentNumber }}">
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Student address line 1</label>
-                        <input class="form-control" type="text" name="studentAddress1">
+                        <input class="form-control" type="text" name="studentAddress1" value="{{ i.studentAddress1 }}">
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Student address line 2</label>
-                        <input class="form-control" type="text" name="studentAddress2">
+                        <input class="form-control" type="text" name="studentAddress2" value="{{ i.studentAddress2 }}">
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Student address line 3</label>
-                        <input class="form-control" type="text" name="studentAddress3">
+                        <input class="form-control" type="text" name="studentAddress3" value="{{ i.studentAddress3 }}">
                     </div>
                     <div class="col-6">
                         <button  type="submit" class="solid-butn">Submit</button>
                     </form>
+                    {% endfor %}
                    <button type="button" class="hollow-butn" onclick="window.location.href='{% url 'students' %}'" >Cancel</button>
                 </div>
             </div>
@@ -58,11 +61,3 @@
 
  </div>
 {% endblock %}
-<!-- 
-institutionName = models.CharField(max_length=40)
-instituitionAddress = models.CharField(max_length=250)
-instituitionLogo = models.ImageField()
-instituitionNumber = models.IntegerField()
-instituitionNumber2 = models.IntegerField()
-instituitionEmail = models.EmailField()
-instituitionEmail2 = models.EmailField() -->

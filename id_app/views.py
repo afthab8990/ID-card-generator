@@ -36,12 +36,12 @@ def editinstitutions(request,id):
 
 def updateinstitution(request,id):
     if request.method == 'POST':
-        institutionName = request.POST.get['institutionName']
-        institutionAddress = request.POST.get['institutionAddress']
-        institutionNumber = request.POST.get['institutionNumber']
-        institutionNumber2 = request.POST.get['institutionNumber2']
-        institutionEmail = request.POST.get['institutionEmail']
-        institutionEmail2 = request.POST.get['institutionEmail2']
+        institutionName = request.POST.get('institutionName')
+        institutionAddress = request.POST.get('institutionAddress')
+        institutionNumber = request.POST.get('institutionNumber')
+        institutionNumber2 = request.POST.get('institutionNumber2')
+        institutionEmail = request.POST.get('institutionEmail')
+        institutionEmail2 = request.POST.get('institutionEmail2')
         try:
             img_c = request.FILES['institutionLogo']
             fs = FileSystemStorage()
@@ -73,4 +73,30 @@ def poststudents(request):
         data = student(sinstitution=sinstitution,studentName=studentName,studentPhoto=studentPhoto,studentNumber=studentNumber,studentRollnumber=studentRollnumber,studentAddress1=studentAddress1,studentAddress2=studentAddress2,studentAddress3=studentAddress3)
         data.save()
     return redirect('students')
+
+def editstudents(request,id):
+    data = student.objects.filter(id=id)
+    idata = instituition.objects.all()
+    return render(request,'editstudents.html',{'data':data,'idata':idata})
+
+def updatestudents(request,id):
+    if request.method == 'POST':
+        sinstitutionName = request.POST.get('sinstitution')
+        studentName = request.POST.get('studentName')
+        studentPhoto = request.FILES.get('studentPhoto')
+        studentNumber = request.POST.get('studentNumber')
+        studentRollnumber = request.POST.get('studentRollnumber')
+        studentAddress1 = request.POST.get('studentAddress1')
+        studentAddress2 = request.POST.get('studentAddress2')
+        studentAddress3 = request.POST.get('studentAddress3')
+        try:
+            img_c = request.FILES['studentPhoto']
+            fs = FileSystemStorage()
+            studentPhoto = fs.save(img_c.name, img_c)
+        except MultiValueDictKeyError:
+            studentPhoto = student.objects.get(id=id).studentPhoto
+        sinstitution = get_object_or_404(instituition, institutionName=sinstitutionName)
+        student.objects.filter(id=id).update(sinstitution=sinstitution,studentName=studentName,studentPhoto=studentPhoto,studentNumber=studentNumber,studentRollnumber=studentRollnumber,studentAddress1=studentAddress1,studentAddress2=studentAddress2,studentAddress3=studentAddress3)
+    return redirect('students')
+
 # Create your views here.

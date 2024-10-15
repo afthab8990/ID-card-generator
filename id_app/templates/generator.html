@@ -44,6 +44,33 @@
     </div> 
   </div>
   {% block content %}
+    <div class="container-fluid">
+        <div class="row justify-content-center" style="background-size: cover; background-position: center; background-attachment: fixed; height: 200px; overflow: hidden; background-image: url('{% static 'img/institution.jpg' %}');" >
+            <h1 style="margin: auto;font-size: 80px;" class="text-primary">Generate for Institutions</h1>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                {% for i in idata %}
+                <div class="col-2 d-flex justify-content-center m-3">
+                    <div class="box">
+                        <a><button class="close-btn">X</button></a>
+                            <div class="logo-box text-center m-3" >
+                                <img class="cardimg" src="{{ i.institutionLogo.url }}" >
+                            </div>
+                            <div class="half-box justify-content-center ">
+                                <h5 class="text-center">{{ i.institutionName }}</h5>
+                            </div>
+                            <div class="half-box justify-content-center">
+
+                                <a href="{% url 'editinstitutions' id=i.id %}"><button class="change-btn text-center">Make changes</button></a>
+                            </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
   {% endblock %}
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
