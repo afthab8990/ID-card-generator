@@ -99,4 +99,7 @@ def updatestudents(request,id):
         student.objects.filter(id=id).update(sinstitution=sinstitution,studentName=studentName,studentPhoto=studentPhoto,studentNumber=studentNumber,studentRollnumber=studentRollnumber,studentAddress1=studentAddress1,studentAddress2=studentAddress2,studentAddress3=studentAddress3)
     return redirect('students')
 
+def viewcards(request):
+    return render(request,'viewcards.html')
+
 # Create your views here.

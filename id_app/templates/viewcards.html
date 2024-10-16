@@ -1,0 +1,70 @@
+{% extends 'generator.html' %}
+{% load static %}
+    {% block content %}    
+    <div class="container-fluid">
+        <div class="row justify-content-center" style="background-size: cover; background-position: center; background-attachment: fixed; height: 200px; overflow: hidden; background-image: url('{% static 'img/institution.jpg' %}');" >
+            <h1 class="text-warning" style="margin: auto;font-size: 80px;">Institutions</h1>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4 d-flex justify-content-center m-3">
+                    <div class="container">
+                        <div id="id-card">
+                            <div class="id-card">
+                                <div class="institution">
+                                    <div class="i-image">
+                                        <img class="i-logo"  src="{% static 'img/MES_logo.png' %}" alt="institution">
+                                    </div>
+                                    <div class="i-details">
+                                        <h5 class="text-center">MES College </h6>
+                                        <p class="text-center">Marampally marampally marampally marampally marampally </h5>
+                                        <p class="text-center">Marampally marampally marampally marampally marampally </p>
+                                    </div>
+                                </div>
+
+                                <div class="photo">
+                                    <img src="{% static 'img/institution.jpg' %}" alt="ID Photo">
+                                </div>
+                                <div class="details">
+                                    <h2>John Doe</h2>
+                                    <p>ID: 12345678</p>
+                                    <div class="info">
+                                        <p>Position: Software Engineer</p>
+                                        <p>Department: IT</p>
+                                        <p>Company: ABC Corporation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="download-btn">Download ID Card</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('download-btn').addEventListener('click', function() {
+            console.log("Button clicked!");
+    
+            var cardElement = document.getElementById('id-card');
+            if (!cardElement) {
+                console.error("ID card element not found");
+                return;
+            }
+    
+            html2canvas(cardElement, { scale: 1 }).then(function(canvas) {
+                console.log("Canvas created");
+    
+                var link = document.createElement('a');
+                link.href = canvas.toDataURL("image/png");
+                link.download = 'id-card.png';
+                
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }).catch(function(error) {
+                console.error("Error generating image: ", error);
+            });
+        });
+    </script>
+    
+{% endblock %}

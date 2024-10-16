@@ -101,3 +101,85 @@ body{
     background-color: black;
     color:white
 }
+
+.id-card {
+    width:280px ;
+    height: 400px;
+    display: inline-block;
+    border: 2px solid #000;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.id-card .photo {
+    height: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+.id-card .photo img {
+    width: 80px;
+    height: 130px;
+    object-fit:cover;
+}
+
+.id-card .details {
+    height: 45%;
+    padding: 20px;
+}
+
+.details h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.details p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 1rem;
+}
+
+.details .info {
+    margin-top: 10px;
+}
+
+.id-card .institution{
+    height:20%;
+    display: flex;
+    padding:5px; 
+}
+
+.institution .i-image{
+    width:15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.i-image .i-logo{
+    width:100%;
+    object-fit: contain;
+    padding: 3px;
+}
+
+.institution .i-details{
+    width:80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+}
+
+.i-details p, .i-details h6{
+    margin: 0px;
+}
+
+
+.institution .i-details p{
+    font-size: min(5vw, 9px);
+} 

@@ -14,4 +14,5 @@ urlpatterns = [
     path('poststudents',views.poststudents,name='poststudents'),
     path('editstudents<int:id>',views.editstudents,name='editstudents'),
     path('updatestudents<int:id>',views.updatestudents,name='updatestudents'),
+    path('viewcards',views.viewcards,name='viewcards'),
 ]
