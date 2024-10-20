@@ -3,12 +3,15 @@ from django.http import HttpRequest
 from .models import*
 from django.core.files.storage import FileSystemStorage
 from django.utils.datastructures import MultiValueDictKeyError
+from itertools import chain
 
 def homepage(request):
     return render(request,'homepage.html')
 
 def generator(request):
-    return render(request,'generator.html')
+    idata = instituition.objects.all()
+    sdata = student.objects.all()
+    return render(request,'generator.html',{'idata':idata, 'sdata':sdata})
 
 def institutions(request):
     idata = instituition.objects.all()
@@ -69,8 +72,9 @@ def poststudents(request):
         studentAddress1 = request.POST['studentAddress1']
         studentAddress2 = request.POST['studentAddress2']
         studentAddress3 = request.POST['studentAddress3']
+        studentDepartment = request.POST['studentDepartment']
         sinstitution = get_object_or_404(instituition, institutionName=sinstitutionName)
-        data = student(sinstitution=sinstitution,studentName=studentName,studentPhoto=studentPhoto,studentNumber=studentNumber,studentRollnumber=studentRollnumber,studentAddress1=studentAddress1,studentAddress2=studentAddress2,studentAddress3=studentAddress3)
+        data = student(sinstitution=sinstitution,studentName=studentName,studentPhoto=studentPhoto,studentNumber=studentNumber,studentRollnumber=studentRollnumber,studentAddress1=studentAddress1,studentAddress2=studentAddress2,studentAddress3=studentAddress3,studentDepartment=studentDepartment)
         data.save()
     return redirect('students')
 
@@ -101,5 +105,7 @@ def updatestudents(request,id):
 
 def viewcards(request):
     return render(request,'viewcards.html')
+
+
 
 # Create your views here.

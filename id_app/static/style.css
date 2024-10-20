@@ -123,12 +123,12 @@ body{
 .id-card .photo img {
     width: 80px;
     height: 130px;
-    object-fit:cover;
+    object-fit:contain;
 }
 
 .id-card .details {
     height: 45%;
-    padding: 20px;
+    padding: 10px;
 }
 
 .details h2 {
@@ -140,7 +140,7 @@ body{
 .details p {
     margin: 5px 0;
     color: #555;
-    font-size: 1rem;
+    font-size: 13px;
 }
 
 .details .info {
@@ -154,7 +154,7 @@ body{
 }
 
 .institution .i-image{
-    width:15%;
+    width:20%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -175,11 +175,21 @@ body{
     padding: 0px;
 }
 
-.i-details p, .i-details h6{
+.i-details p, .i-details h5{
     margin: 0px;
 }
 
+.i-details h5{
+    text-transform:uppercase;
+    font-size: medium;
+    font-weight: 600;
+}
 
 .institution .i-details p{
     font-size: min(5vw, 9px);
 } 
+
+#gen{
+    width:280px ;
+    height: 400px;
+}

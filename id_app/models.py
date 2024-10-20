@@ -14,6 +14,7 @@ class student(models.Model):
     sinstitution=models.ForeignKey(instituition,on_delete=models.CASCADE)
     studentName = models.CharField(max_length=25)
     studentRollnumber = models.IntegerField()
+    studentDepartment = models.CharField(max_length=50)
     studentNumber = models.IntegerField()
     studentAddress1 = models.CharField(max_length=50)
     studentAddress2 = models.CharField(max_length=50)
