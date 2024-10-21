@@ -106,10 +106,8 @@ body{
     width:280px ;
     height: 400px;
     display: inline-block;
-    border: 2px solid #000;
-    border-radius: 10px;
     overflow: hidden;
-    background-color: #ffffff;
+    background-color: #f5f5f5;
 }
 
 .id-card .photo {
@@ -117,7 +115,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff;
 }
 
 .id-card .photo img {
@@ -192,4 +189,19 @@ body{
 #gen{
     width:280px ;
     height: 400px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+a:hover{
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+
+.socials{
+    height: 30px;
 }

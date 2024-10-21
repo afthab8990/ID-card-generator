@@ -13,11 +13,15 @@
 <body>
   <div class="container-fluid">
     <div class="row d-flex bg-black align-items-center" style="height: 80px;">
-      <div class="col-6">
-        <h3 class="text-white">ID Card generator</h3>
+        <div class="col-6">
+          <h3 class="text-white">ID Card generator</h3>
+        </div>
+        <div class="col-6 d-flex text-white justify-content-end">
+          <a class="m-2" href="{% url 'homepage' %}" >About us</a>
+          <p class="m-2"> | </p>
+          <a class="m-2" href="#">Contact</a>
+        </div>
       </div>
-      <div class="col-6"></div>
-    </div>
     <div class="row text-center">
         
             <nav class="navbar navbar-expand navbar-light bg-white">
@@ -45,37 +49,33 @@
   </div>
   {% block content %}
   <div class="container-fluid">
-      <div class="row justify-content-center" style="background-size: cover; background-position: center; background-attachment: fixed; height: 200px; overflow: hidden; background-image: url('{% static 'img/institution.jpg' %}');" >
-          <h1 style="margin: auto;font-size: 80px;" class="text-primary">Generate for Institutions</h1>
-      </div>
-      <div class="container-fluid">
-          <div class="row">
-              {% for i in idata %}
-              <div class="col-2 d-flex justify-content-center m-3">
-                  <div class="box">
-                      <a><button class="close-btn">X</button></a>
-                          <div class="logo-box text-center m-3" >
-                              <img class="cardimg" src="{{ i.institutionLogo.url }}" >
-                          </div>
-                          <div class="half-box justify-content-center ">
-                              <h5 class="text-center">{{ i.institutionName }}</h5>
-                          </div>
-                  </div>
-              </div>
-              {% endfor %}
-          </div>
-      </div>
       <div class="row justify-content-center" style="background-size: cover; background-position: center; background-attachment: fixed; height: 200px; overflow: hidden; background-image: url('{% static 'img/student.jpg' %}');" >
-        <h1 class="text-warning" style="margin: auto;font-size: 80px;">Add Students</h1>
+        <h1 class="text-warning" style="margin: auto;font-size: 80px;">Generate cards</h1>
+    </div>
+    <div class="row justify-content-center mb-4">
+        <form method="GET" action="{% url 'generator' %}">
+            <div class="col-4">
+                <label for="sort_by" class="form-label">Filter by Institution:</label>
+                <select class="form-select" name="insfilt" id="sort_by">
+                    <option value="all">All</option>
+                    {% for i in idata %}
+                    <option value="{{ i.institutionName }}">{{ i.institutionName }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="hollow-butn mt-2">Go</button>
+            </div>
+        </form>
     </div>
     <div class="row justify-content-center">
         {% for i in sdata %}
-        <div class="col-4 m-3 d-flex justify-content-center">
+        <div class="col-4 m-3 d-flex flex-column align-items-center "> <!-- Center card and button -->
             <!-- Unique ID for each card -->
             <div id="gen-{{ forloop.counter }}" class="id-card">
                 <div class="institution">
                     <div class="i-image">
-                        <img class="i-logo"  src="{{ i.sinstitution.institutionLogo.url }}" alt="institution">
+                        <img class="i-logo" src="{{ i.sinstitution.institutionLogo.url }}" alt="institution">
                     </div>
                     <div class="i-details">
                         <h5 class="text-center">{{ i.sinstitution.institutionName }}</h5>
@@ -96,13 +96,12 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <!-- Pass the unique ID to the button -->
-                <button class="hollow-butn ms-3" data-id="gen-{{ forloop.counter }}">Download ID Card</button>
-            </div>
+            <!-- Pass the unique ID to the button and place it directly below the card -->
+            <button class="hollow-butn download-btn mt-3" data-id="gen-{{ forloop.counter }}">Download ID Card</button>
         </div>
         {% endfor %}
     </div>
+    
 </div>
 </div>
 {% endblock %}

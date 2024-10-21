@@ -15,7 +15,11 @@
         <div class="col-6">
           <h3 class="text-white">ID Card generator</h3>
         </div>
-        <div class="col-6"></div>
+        <div class="col-6 d-flex text-white justify-content-end">
+          <a class="m-2" href="{% url 'homepage' %}" >About us</a>
+          <p class="m-2"> | </p>
+          <a class="m-2" href="#">Contact</a>
+        </div>
       </div>
     
         <div class="row">
@@ -58,10 +62,22 @@
         </div>
     </div>  
     <div class="row" style="background-color: rgb(0, 0, 0);">
-        <div class="col-6 mt-5 text-white " >
+        <div class="col-6 mt-5 text-white align-items-center " >
                 <h3 class="text-center" style="font-weight: 700;border-bottom-style:solid ;border-bottom-color: grey;border-bottom-width: 1px;">ID CARD GENERATOR</h3>
                 <p class="text-white">Developed by : Afthab Ansari</p>
-                <img src="{% static 'icons/linkedin.svg' %}">
+                <div class="col align-items-center d-flex">
+                    <ul>
+                        <li>
+                            <img class="socials m-2" src="{% static 'icons/linkedin.svg' %}"> <a href="www.linkedin.com/in/afthab-in
+
+                            "> Afthab Ansari </a>
+                        </li>
+                        <li>
+                            <img class="socials m-2" src="{% static 'icons/github.svg' %}"> <a href="https://github.com/afthab8990
+
+                            "> afthab_zero </a>
+                        </li>
+                </div>
                 
             </div>
             <div class="col-6 mt-5 text-white text-center" >

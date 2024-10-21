@@ -10,8 +10,13 @@ def homepage(request):
 
 def generator(request):
     idata = instituition.objects.all()
-    sdata = student.objects.all()
-    return render(request,'generator.html',{'idata':idata, 'sdata':sdata})
+    insfilt = request.GET.get('insfilt', 'all')
+    if insfilt == "all":
+        sdata = student.objects.all()
+    else:
+        sdata = student.objects.filter(sinstitution__institutionName=insfilt)
+
+    return render(request, 'generator.html', {'idata': idata, 'sdata': sdata})
 
 def institutions(request):
     idata = instituition.objects.all()
@@ -107,5 +112,10 @@ def viewcards(request):
     return render(request,'viewcards.html')
 
 
-
+# def turfsort(request,category):
+#     if (category=="all"):
+#         data=turf.objects.all()
+#     else:
+#         data=turf.objects.filter(turflocation=category)
+#     return render(request, 'turfsort.html',{'data':data})
 # Create your views here.
