@@ -83,6 +83,10 @@ def poststudents(request):
         data.save()
     return redirect('students')
 
+def deletestudents(request,id):
+    student.objects.filter(id=id).delete()
+    return redirect('students')
+
 def editstudents(request,id):
     data = student.objects.filter(id=id)
     idata = instituition.objects.all()
@@ -111,11 +115,3 @@ def updatestudents(request,id):
 def viewcards(request):
     return render(request,'viewcards.html')
 
-
-# def turfsort(request,category):
-#     if (category=="all"):
-#         data=turf.objects.all()
-#     else:
-#         data=turf.objects.filter(turflocation=category)
-#     return render(request, 'turfsort.html',{'data':data})
-# Create your views here.

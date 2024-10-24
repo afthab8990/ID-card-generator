@@ -15,7 +15,7 @@
                 {% for i in sdata %}
                 <div class="col-2 d-flex justify-content-center m-3">
                     <div class="box">
-                        <a><button class="close-btn">X</button></a>
+                        <a href="{% url 'deletestudents' id=i.id %}"><button class="close-btn">X</button></a>
                             <div class="logo-box text-center m-3" >
                                 <img class="cardimg" src="{{ i.studentPhoto.url }}" >
                             </div>

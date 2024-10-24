@@ -65,6 +65,7 @@ body{
     width:80px;
     height:110px;
     background-size:cover;
+    object-fit: contain;
 }
 
 .close-btn{
@@ -193,13 +194,12 @@ body{
 
 a{
     text-decoration: none;
-    color: white;
     transition: 0.3s;
 }
 
 a:hover{
     text-decoration: underline;
-    text-decoration-color: white;
+
 }
 
 .socials{
